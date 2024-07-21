@@ -1,0 +1,2 @@
+#+title: Readme
+A collection of various solved problems python, mainly Pennylane and Qiskit. A handful of solved Leetcode problems are present as well.
