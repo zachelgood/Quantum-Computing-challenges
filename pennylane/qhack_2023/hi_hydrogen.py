@@ -26,7 +26,7 @@ def num_electrons(charge):
     """
 
     # Put your solution here #
-    return -(2-charge)
+    return (2-charge)
 
 def hf(electrons, num_qubits):
     """Calculates the Hartree-Fock state of the hydrogen molecule.
@@ -39,8 +39,7 @@ def hf(electrons, num_qubits):
         (numpy.tensor): The HF state.
     """
 
-    HF=qchem.hf_state(electrons, num_qubits)
-    return HF
+    return qml.qchem.hf_state(electrons, num_qubits)
 
 def run_VQE(coordinates, charge):
     """Performs a VQE routine for the given hydrogen molecule.
@@ -76,8 +75,8 @@ def run_VQE(coordinates, charge):
         """
 
         # Put your solution here #
-        qml.AllSinglesDoubles(weights, dev.wires, hf_state, singles,doubles)
-        return
+        qml.template.AllSinglesDoubles(weights,dev.wires, hf_state, singles,doubles)
+        return qml.exp(hamiltonian)
 
     np.random.seed = 1234
     weights = np.random.normal(

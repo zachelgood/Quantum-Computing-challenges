@@ -27,8 +27,9 @@ def hf(num_qubits):
         (numpy.tensor): The HF state.
     """
 
+    HF=qml.qchem.hf_state(2, num_qubits)
+    return HF
     # Put your solution here #
-    return
 
 def run_VQE(coordinates):
     """Performs a VQE routine for the given hydrogen molecule.
@@ -62,7 +63,8 @@ def run_VQE(coordinates):
         """
 
         # Put your solution here #
-        return
+        qml.template.AllSinglesDoubles(weights,dev.wires, hf_state, singles,doubles)
+        return qml.exp(hamiltonian)
 
     np.random.seed(1234)
     weights = np.random.normal(
