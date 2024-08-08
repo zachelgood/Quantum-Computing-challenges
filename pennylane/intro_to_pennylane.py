@@ -2,6 +2,7 @@
 
 import json
 import pennylane as qml
+from pennylane import wires
 import pennylane.numpy as np
 def W(params):
 
@@ -16,9 +17,10 @@ def W(params):
         Since this function is a subcircuit, you must not return anything.
 
     """
+    num_wires=len(params[0])
+    wires=list(range(num_wires))
 
-
-    # Put your code here
+    qml.BasicEntanglerLayers(weights=params, wires=wires,rotation=qml.RY)
 
 
 def S(g, x, num_wires):
@@ -38,14 +40,13 @@ def S(g, x, num_wires):
         Since this function is a subcircuit, you must not return anything.
 
     """
-
-
-    # Put your code here
+    for wire in range(num_wires):
+        qml.exp(1j*x*g(wire))
 
 
 # Create a device
 
-dev =
+dev =qml.device('default.qubit',wires=[0,1,2,3])
 
 @qml.qnode(dev, expansion_strategy = "device")
 def quantum_model(param_set, g, x):
@@ -65,9 +66,15 @@ def quantum_model(param_set, g, x):
         basis on the first wire.
     """
 
-
+    num_wires=len(param_set[0][0])
+    for i in range(len(param_set)):
+       W(param_set[i])
+       if i==len(param_set)-1:
+           pass
+       else:
+           S(g,x,num_wires)
     # Put your code here
-
+    return qml.probs(0)
 
 # These functions are used to test your solution
 

@@ -27,8 +27,8 @@ def evolve_state(coeffs, time):
     ]
     hamiltonian = qml.dot(coeffs, operators)
 
-    # Put your code here #
-
+    #evolve Hamiltonian
+    qml.ApproxTimeEvolution(hamiltonian,time)
     # Return the required density matrix.
 
 def purity(rho):
