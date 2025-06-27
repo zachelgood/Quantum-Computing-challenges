@@ -1,2 +1,2 @@
 #+title: Readme
-A collection of various solved problems python, mainly Pennylane and Qiskit. A handful of solved Leetcode problems are present as well.
+A collection of solutions to various problems in Pennylane and Qiskit, focusing on Pennylane challenges, as well as Qiskit summer school and Qiskit challenge 2024
